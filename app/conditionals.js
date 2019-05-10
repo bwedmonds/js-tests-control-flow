@@ -2,7 +2,12 @@
 
 function largerNum(num1, num2) {
     // you code below
-
+    // easy method is return Math.max(num1, num2)
+    if (num1 > num2) {
+        return num1
+    } else {
+        return num2
+    }
     // you code above
 }
 
@@ -16,7 +21,19 @@ function largerNum(num1, num2) {
 
 function testGrader(score, possible) {
     // you code below
+    let percent = (score / possible) * 100;
 
+    if (percent >= 90) {
+        return "A";
+    } else if (percent >= 80) {
+        return "B";
+    } else if (percent >= 70) {
+        return "C";
+    } else if (percent >= 60) {
+        return "D";
+    } else {
+        return "F";
+    }
     // you code above
 }
 
@@ -32,14 +49,29 @@ function testGrader(score, possible) {
 //Make sure your ranges are inclusive
 
 function timeOfDayGreeting(hour) {
+    // var d = new Date();
+    // var time = d.getHours();
     // you code below
-
-    // you code above
+    if (hour >= 5 && hour <= 11) {
+        return "good morning";
+    } else if (hour >= 12 && hour <= 17) {
+        return "good afternoon";
+    } else if (hour >= 18 && hour <= 21) {
+        return "good evening";
+    } else if (hour >= 22 && hour <= 24 || hour >= 1 && hour <= 4) {
+        return "good night";
+        // you code above
+    }
 }
-
 //4. Write a function that will take in a number and return 'fever' if it indicates a fever (over 98.6) and additionally if the person should go to the hospital (at or above 103) 'fever go to hospital' (hint: try this with string concatenation), if it is under return 'no fever'
 function fever(temp) {
-
+    if (temp <= 98.6) {
+        return "no fever"
+    } else if (temp > 98.6 && temp < 103) {
+        return "fever"
+    } else if (temp >= 103) {
+        return "fever go to hospital"
+    }
 }
 
 //5. Write a function that takes in a car object, if it is not moving then return true
@@ -52,9 +84,14 @@ let myCar = {
 
 function isStopped(car) {
     // you code below
-
+    // if (moving) {
+    //     return false
+    // }
+    // return true
+    return !car.moving
     // you code above
 }
+
 
 //6. Write a function that returns true if a dish is yours and is dirty, or false if one of the statements is false
 
@@ -65,7 +102,11 @@ let dish = {
 
 function washDish(dish) {
     // you code below
-
+    if (dish.yourDish && dish.isDirty) {
+        return true
+    } else {
+        return false
+    }
     // you code above
 }
 
@@ -98,8 +139,11 @@ let flights = [{
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
     // you code below
-
+    let flight = flights.find(f => f.to == destination.toUpperCase())
+    if (firstClass) {
+        return flight.prices.firstClass
+    }
+    return flight.prices.standard
     // you code above
-
 }
 
